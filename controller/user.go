@@ -24,8 +24,8 @@ func init() {
 }
 
 func (a Customer) InsertData(c echo.Context) error {
-	m.InsertUser(c.FormValue("username"), c.FormValue("password"), c.FormValue("nama_lengkap"))
-	return c.String(http.StatusCreated, "Username:"+c.FormValue("username"))
+	resp := m.InsertUser(c.FormValue("username"), c.FormValue("password"), c.FormValue("nama_lengkap"))
+	return c.String(http.StatusCreated, resp)
 }
 
 func (a Customer) UpdateData(c echo.Context) error {

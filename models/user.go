@@ -16,7 +16,7 @@ func GetMD5Hash(text string) string {
 	return hex.EncodeToString(hasher.Sum(nil))
 }
 
-func (u *User) InsertUser(Username, Password, NamaLengkap string) string {
+func (u User) InsertUser(Username, Password, NamaLengkap string) string {
 	r := repository.User{}
 	r.Username = Username
 	r.Password = GetMD5Hash(Password)
@@ -24,7 +24,7 @@ func (u *User) InsertUser(Username, Password, NamaLengkap string) string {
 	return r.Insert()
 }
 
-func (u *User) UpdateUser(Id, Username, Password, NamaLengkap string) string {
+func (u User) UpdateUser(Id, Username, Password, NamaLengkap string) string {
 	r := repository.User{}
 	r.Id = Id
 	r.Username = Username
@@ -33,19 +33,19 @@ func (u *User) UpdateUser(Id, Username, Password, NamaLengkap string) string {
 	return r.Update()
 }
 
-func (u *User) DeleteUser(Id string) string {
+func (u User) DeleteUser(Id string) string {
 	r := repository.User{}
 	r.Id = Id
 	return r.Delete()
 }
 
-func (u *User) GetAllUser() []repository.User {
+func (u User) GetAllUser() []repository.User {
 	r := repository.User{}
 	datas := r.GetAll()
 	return datas
 }
 
-func (u *User) GetUser(Id string) []repository.User {
+func (u User) GetUser(Id string) []repository.User {
 	r := repository.User{}
 	r.Id = Id
 	datas := r.GetById()
