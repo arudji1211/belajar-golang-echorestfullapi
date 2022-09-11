@@ -1,8 +1,11 @@
 package main
 
-import "github.com/arudji1211/belajar-golang-echorestfullapi/controller"
+import (
+	"github.com/arudji1211/belajar-golang-echorestfullapi/routes"
+)
 
 func main() {
 	//start server
-	controller.Routings()
+	e := routes.Router()
+	e.Logger.Fatal(e.Start("localhost:1323"))
 }

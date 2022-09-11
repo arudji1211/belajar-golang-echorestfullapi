@@ -1,17 +1,18 @@
-package controller
+package routes
 
 import (
+	"github.com/arudji1211/belajar-golang-echorestfullapi/controller"
 	"github.com/labstack/echo/v4"
 )
 
-func Routings() {
+func Router() *echo.Echo {
 	e := echo.New()
-	c := &Customer{}
+	c := &controller.User{}
 	e.POST("/user", c.InsertData)
 	e.PUT("/user/:id", c.UpdateData)
 	e.DELETE("/user/:id", c.DeleteData)
 	e.GET("/user/:id", c.GetData)
 	e.GET("/user", c.GetAllData)
 
-	e.Logger.Fatal(e.Start("localhost:1323"))
+	return e
 }
