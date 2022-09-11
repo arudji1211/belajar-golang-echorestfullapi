@@ -7,6 +7,8 @@ import (
 
 func Router() *echo.Echo {
 	e := echo.New()
+
+	//user
 	c := &controller.User{}
 	e.POST("/user", c.InsertData)
 	e.PUT("/user/:id", c.UpdateData)
