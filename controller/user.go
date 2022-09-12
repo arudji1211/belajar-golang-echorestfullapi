@@ -11,12 +11,6 @@ import (
 type User struct {
 }
 
-type response struct {
-	Id           string
-	Username     string
-	Nama_lengkap string
-}
-
 var m models.User
 
 func init() {
@@ -25,17 +19,17 @@ func init() {
 
 func (a User) InsertData(c echo.Context) error {
 	m.InsertUser(c.FormValue("username"), c.FormValue("password"), c.FormValue("nama_lengkap"))
-	return c.String(http.StatusCreated, "Username:"+c.FormValue("username"))
+	return c.String(http.StatusCreated, "OK")
 }
 
 func (a User) UpdateData(c echo.Context) error {
-	resp := m.UpdateUser(c.Param("id"), c.FormValue("username"), c.FormValue("password"), c.FormValue("nama_lengkap"))
-	return c.String(http.StatusOK, resp)
+	m.UpdateUser(c.Param("id"), c.FormValue("nama_lengkap"), c.FormValue("password"), c.FormValue("username"))
+	return c.String(http.StatusOK, "OK")
 }
 
 func (a User) DeleteData(c echo.Context) error {
-	resp := m.DeleteUser(c.Param("id"))
-	return c.String(http.StatusOK, resp)
+	m.DeleteUser(c.Param("id"))
+	return c.String(http.StatusOK, "OK")
 }
 
 func (a User) GetData(c echo.Context) error {

@@ -9,12 +9,19 @@ func Router() *echo.Echo {
 	e := echo.New()
 
 	//user
-	c := &controller.User{}
-	e.POST("/user", c.InsertData)
-	e.PUT("/user/:id", c.UpdateData)
-	e.DELETE("/user/:id", c.DeleteData)
-	e.GET("/user/:id", c.GetData)
-	e.GET("/user", c.GetAllData)
+	cu := &controller.User{}
+	e.POST("/user", cu.InsertData)
+	e.PUT("/user/:id", cu.UpdateData)
+	e.DELETE("/user/:id", cu.DeleteData)
+	e.GET("/user/:id", cu.GetData)
+	e.GET("/user", cu.GetAllData)
+
+	cc := &controller.Course{}
+	e.POST("/course", cc.InsertData)
+	e.PUT("/course/:id", cc.UpdateData)
+	e.DELETE("/course/:id", cc.DeleteData)
+	e.GET("/course/:id", cc.GetData)
+	e.GET("/course", cc.GetAllData)
 
 	return e
 }

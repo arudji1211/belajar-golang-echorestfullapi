@@ -24,12 +24,15 @@ func (u User) InsertUser(Username, Password, NamaLengkap string) string {
 	return r.Insert()
 }
 
-func (u User) UpdateUser(Id, Username, Password, NamaLengkap string) string {
+func (u User) UpdateUser(Id, NamaLengkap, Password, Username string) string {
 	r := repository.User{}
 	r.Id = Id
-	r.Username = Username
-	r.Password = GetMD5Hash(Password)
 	r.NamaLengkap = NamaLengkap
+	if len(Password) > 0 {
+		Password = GetMD5Hash(Password)
+	}
+	r.Password = Password
+	r.Username = Username
 	return r.Update()
 }
 

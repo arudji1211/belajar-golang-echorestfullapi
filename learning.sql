@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 11, 2022 at 01:07 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Sep 13, 2022 at 07:49 AM
+-- Server version: 8.0.30-0ubuntu0.22.04.1
+-- PHP Version: 8.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,10 +28,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `course` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `nama_course` varchar(50) NOT NULL,
-  `deskripsi_course` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `deskripsi_course` text NOT NULL,
+  `thumbnail_course` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `nama_course`, `deskripsi_course`, `thumbnail_course`) VALUES
+(1, 'test_course', 'test deskripsi course', 'assets/img/course/test.jpg');
 
 -- --------------------------------------------------------
 
@@ -40,11 +48,11 @@ CREATE TABLE `course` (
 --
 
 CREATE TABLE `enroll` (
-  `id` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_course` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `id_user` int NOT NULL,
+  `id_course` int NOT NULL,
   `complete_chapter` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -53,12 +61,12 @@ CREATE TABLE `enroll` (
 --
 
 CREATE TABLE `materi` (
-  `id` int(11) NOT NULL,
-  `id_course` int(11) NOT NULL,
-  `chapter` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `id_course` int NOT NULL,
+  `chapter` int NOT NULL,
   `nama_materi` text NOT NULL,
   `isi_materi` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -67,11 +75,18 @@ CREATE TABLE `materi` (
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `username` varchar(16) NOT NULL,
   `password` varchar(32) NOT NULL,
   `nama_lengkap` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `nama_lengkap`) VALUES
+(1, 'aruji', 'e95f77c464f303a7a830b98c145a0711', 'arudji hermatyar');
 
 --
 -- Indexes for dumped tables
@@ -99,8 +114,7 @@ ALTER TABLE `materi`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -110,25 +124,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `enroll`
 --
 ALTER TABLE `enroll`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
