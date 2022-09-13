@@ -2,7 +2,7 @@
 
 #End Point
 
-user
+Table User
 
 GET /user 
 
@@ -19,7 +19,8 @@ DELETE /user/[id]
 
 
 
-#course
+Table Course
+
 GET /course
 
 GET /course/[id]
