@@ -1,8 +1,9 @@
 # belajar-golang-echorestfullapi
 
-End Point
+#End Point
 
-# user
+user
+
 GET /user 
 
 GET /user/[id]
